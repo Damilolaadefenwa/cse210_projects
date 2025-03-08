@@ -28,7 +28,7 @@ class Program
             Console.WriteLine($"The sum is: {sum}");
         }
         // find the average of the numbers in the list
-        double average = sum / numbers.Count;
+        float average = ((float)sum) / numbers.Count;
         Console.WriteLine($"The average is: {average}");
         // find the largest number in the list
         int largest = numbers[0];
