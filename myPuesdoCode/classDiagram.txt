@@ -1,0 +1,17 @@
+WEEK 02 : ABSTRATION 
+class: Job
+state: attributes: 
+    _company : string
+    _jobTitle : string
+    _startYear : int
+    _endYear : int
+Behaviors: method:
+    Display() : void
+    
+class: Resume
+state: attributes: 
+    _name : string
+    _jobs : string   CORRECTION: _jobs:List<job>
+Behaviors: method:
+    Display() : void
+
