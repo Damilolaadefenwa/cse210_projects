@@ -1,4 +1,4 @@
-WEEK 02 : ABSTRATION 
+WEEK 02 : ABSTRATION (learning activity)
 class: Job
 state: attributes: 
     _company : string

@@ -1,0 +1,29 @@
+WEEK 02: ABSTRATION (assignment)
+MAIN program class: This will contain the instances of the classes and the program menu(handling user interation).
+CLASSES
+    CLASS 1: Journal.cs // This journal should store a list of Entry objects.
+                       // This class should hold or store the list of journaling entries made & iterate the responses stored in the Entry-class. this will be from the main program)
+    Attributes:( Variables)
+        _entries -: list<Entry>  // i.e (the data type is a list.)the Entry.class objects  
+    Behaviors:(Methods)
+        AddingAnEntry (_newEntry : Entry ) // : void
+        DisplayingAllEntries()  // : void // This Journal display method could iterate through all Entry.cs objects and call the Entry display method.
+        SaveToFile( file : string)
+        LoadFromFile(file : string)
+
+
+    CLASS 2: Entry.cs // It main responsibilty is to hold data. it should keep tracks of the date, prompt text, and the text of the entry itself)
+                      // This class should present the responses that were held from the prompt as a completed single journal entry. This also can be called from the main program)
+    Attributes:(Variables)
+        _date : string  // This is date when the text was entered
+        _promptText : string  // This is the  text question that will prompt for answer
+        _entryText : string  // This is inputted text entered by the user
+    Behaviors:(Methods)
+        Display() :void
+
+
+    CLASS 3: PromptGenerator.cs // This class will generate and supplies random prompts from a list of prompts whenever. this will be called from the main program)
+    Attributes:(Variables)
+        _prompts : List<string> // This is list or container of prompts
+    Behaviors:(Methods)
+        GetRandomPrompt() : string
