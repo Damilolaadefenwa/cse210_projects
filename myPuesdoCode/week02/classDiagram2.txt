@@ -6,13 +6,13 @@ CLASSES
     Attributes:( Variables)
         _entries -: list<Entry>  // i.e (the data type is a list.)the Entry.class objects  
     Behaviors:(Methods)
-        AddingAnEntry (_newEntry : Entry ) // : void
-        DisplayingAllEntries()  // : void // This Journal display method could iterate through all Entry.cs objects and call the Entry display method.
+        AddingAEntry (_newEntry : Entry ) // : void
+        DisplayAll()  // : void // This Journal display method could iterate through all Entry.cs objects and call the Entry display method.
         SaveToFile( file : string)
         LoadFromFile(file : string)
 
 
-    CLASS 2: Entry.cs // It main responsibilty is to hold data. it should keep tracks of the date, prompt text, and the text of the entry itself)
+    CLASS 2: Entry.cs // It main responsibilty is to hold data. it should keep tracks of the date, prompt text, and the text of the entry itself
                       // This class should present the responses that were held from the prompt as a completed single journal entry. This also can be called from the main program)
     Attributes:(Variables)
         _date : string  // This is date when the text was entered
