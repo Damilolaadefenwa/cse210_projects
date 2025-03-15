@@ -22,13 +22,6 @@ public class Journal
 
     }
 
-    // New method to save a prompt to the list of saved prompts
-    public void savingPrompt( string promptText)
-    {
-        string _promptText = promptGenerator.GetRandomPrompt();
-        savedPrompt.Add(_promptText);
-    }
-
     // This is a method. It's function is to add an entry to the journal.
     public void AddEntry(string entryText, string mood, string location)
     {
@@ -106,6 +99,13 @@ public class Journal
         }
 
     }  
+
+    // New method to save a prompt to the list of saved prompts
+    public void SavingPrompt( string promptText)
+    {
+        string _promptText = promptGenerator.GetRandomPrompt();
+        savedPrompt.Add(_promptText);
+    }
 
 
 }

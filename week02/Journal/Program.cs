@@ -32,7 +32,7 @@ class Program
                     // Generate, display and save a random prompt, and then write it to the journal.
                     string _promptText = promptGenerator.GetRandomPrompt();
                     Console.WriteLine(_promptText);
-                    myJournal.savingPrompt(_promptText);
+                    myJournal.SavingPrompt(_promptText);
                     string entryText = Console.ReadLine();
                     Console.WriteLine("Tell us about your mood/emotion? ");
                     string mood = Console.ReadLine();
