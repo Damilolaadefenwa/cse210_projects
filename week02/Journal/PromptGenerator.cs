@@ -32,11 +32,5 @@ public class PromptGenerator
         int index = random.Next(_prompts.Count);
         return _prompts[index];
     }
-
-    // // Add a new prompt to the list
-    // public void AddPrompt(string prompt)
-    // {
-    //     _prompts.Add(prompt);
-    // }
     
 }
