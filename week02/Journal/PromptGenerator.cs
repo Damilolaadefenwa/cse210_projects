@@ -25,12 +25,24 @@ public class PromptGenerator
         };
     }
 
-    // Get a random prompt from the list
-    public string GetRandomPrompt()
+    // Method to generate a random word and save it to the list of prompts
+    public string GenerateRandomPrompt()
     {
         Random random = new Random();
         int index = random.Next(_prompts.Count);
+        _prompts.Add(_prompts[index]);
         return _prompts[index];
+        
     }
-    
+
+    // Get a random prompt from the list
+    // public string GetRandomPrompt()
+    // {
+    //     Random random = new Random();
+    //     int index = random.Next(_prompts.Count);
+    //     return _prompts[index];
+    // }
+
+
+
 }

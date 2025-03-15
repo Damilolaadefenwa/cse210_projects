@@ -17,7 +17,7 @@ public class Entry
     public string _location; // New variable member that handle the location of the user.  
 
     // This is a constructor. It is a special method I called when an object is created.
-    public Entry(string promptText, string entryText, string mood, string location)
+    public Entry(string date, string promptText, string entryText, string mood, string location)
     {
         _date = DateTime.Now.ToString("MM/dd/yyyy");
         _promptText = promptText;
