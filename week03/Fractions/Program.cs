@@ -20,7 +20,7 @@ class Program
       // 5. verify that you can call all of these methods and get the correct values, 
       // using setters to change the values and then getters to retrieve 
       // these new values and then display them to the console. 
-
+      Console.WriteLine("----------------------------");
       f1.SetTop(5);
       Console.WriteLine(f1.GetTop());
       f1.SetBottom(1);
@@ -37,8 +37,21 @@ class Program
       Console.WriteLine(f3.GetBottom());
 
 
+      // 6. Verify that you can call each constructor and that you can retrieve and display 
+      // the different representations for a few different fractions. For example, you could try:
+      Console.WriteLine("----------------------------");
+      Fraction fraction1 = new Fraction(1, 1);
+      Console.WriteLine("Fraction: " + fraction1.GetFractionString());
+      Console.WriteLine("Decimal: " + Fraction.GetDecimalValue(1)); // Pass an appropriate integer argument
+      
+      Fraction fraction2 = new Fraction(5, 1);
+      Console.WriteLine("Fraction: " + fraction2.GetFractionString());
+      Console.WriteLine("Decimal: " + Fraction.GetDecimalValue(5));
 
-
+      Fraction fraction3 = new Fraction(3, 4);
+      Console.WriteLine("Fraction: " + fraction3.GetFractionString());
+      Console.WriteLine("Decimal: " + Fraction.GetDecimalValue(3));
+      
 
 
 

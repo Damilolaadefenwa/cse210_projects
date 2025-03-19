@@ -57,9 +57,18 @@ class Fraction
 
 
     //6. Create methods to return the representations
-
-
-
+    // A. Create a method called GetFractionString that returns the fraction in the form 3/4.
+    public string GetFractionString()
+    {
+        return $"{_top}/{_bottom}";
+    }
+    // B. Create a method called GetDecimalValue that returns a double that is the result of dividing 
+    // the top number by the bottom number, such as 0.75.
+    public static double GetDecimalValue(int value)
+    {
+        // Implementation goes here
+        return 0.0; // Placeholder return value
+    }
 
 
 }
