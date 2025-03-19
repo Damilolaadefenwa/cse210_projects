@@ -16,6 +16,13 @@ class Fraction
         _top = 1;
         _bottom = 1;
     }
+    //Instructor Correction Version
+    // public Fraction()
+    // {
+    //     // Default to 1/1
+    //     _top = 1;
+    //     _bottom = 1;
+    // }
 
     // b. Create the Constructor Constructor that has one parameter for the top and that initializes the denominator to 1. So that if you pass in the number 5, the fraction would be initialized to 5/1.
     public Fraction(int top)
@@ -23,14 +30,25 @@ class Fraction
         _top = top;
         _bottom = 1;
     }
-
+    // Instructor Correction Version
+    //  public Fraction(int wholeNumber)
+    // {
+    //     _top = wholeNumber;
+    //     _bottom = 1;
+    // }
+    
     // c. Create the Constructor that has two parameters, one for the top and one for the bottom.
     public Fraction(int top, int bottom)
     {
         _top = top;
         _bottom = bottom;
     }
-
+    //Instructor Correction Version
+    //  public Fraction(int top, int bottom)
+    // {
+    //     _top = top;
+    //     _bottom = bottom;
+    // }
 
     // 5. Create getters and setters for both the top and the bottom values.
 
@@ -58,18 +76,35 @@ class Fraction
 
     //6. Create methods to return the representations
     // A. Create a method called GetFractionString that returns the fraction in the form 3/4.
-    public string GetFractionString()
+    // public string GetFractionString()
+    // {
+    //     return $"{_top}/{_bottom}";
+    // }
+    // Instructor Correction Version
+     public string GetFractionString()
     {
-        return $"{_top}/{_bottom}";
-    }
-    // B. Create a method called GetDecimalValue that returns a double that is the result of dividing 
-    // the top number by the bottom number, such as 0.75.
-    public static double GetDecimalValue(int value)
-    {
-        // Implementation goes here
-        return 0.0; // Placeholder return value
+        // Notice that this is not stored as a member variable.
+        // Is is just a temporary, local variable that will be recomputed each time this is called.
+        string text = $"{_top}/{_bottom}";
+        return text;
     }
 
+
+    // B. Create a method called GetDecimalValue that returns a double that is the result of dividing 
+    // the top number by the bottom number, such as 0.75.
+    
+    // public static double GetDecimalValue(int value)
+    // {
+    //     // Implementation goes here
+    //     return 0.0; // Placeholder return value
+    // }
+    // Instructor Correction Version
+    public double GetDecimalValue()
+    {
+        // Notice that this is not stored as a member variable.
+        // Is will be recomputed each time this is called.
+        return (double)_top / (double)_bottom;
+    }
 
 }
 
