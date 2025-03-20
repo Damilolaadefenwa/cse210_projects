@@ -1,0 +1,39 @@
+WEEK 03: ENCAPSULATION (assignment)
+MAIN program class: This will contain the instances of the classes and the program menu(handling user interation).
+CLASSES
+    CLASS 1: Scripture.cs // This class should keep track of both the reference and text(from word.cs) of the Scripture.
+                       // It should be able to hides randomly select words and get the display text from words.cs as a string,
+                       // It should be able to check if the scripture is completely hidden so to know when to stop the program. 
+    Attributes:( member Variables)
+        _reference -: // type: Reference   
+        _entries -: // type: List<Word>    
+    Behaviors:(Methods)
+        HideRandomWords (numberToHide : int ) //type:void : This will determine number of words to hide when the user press enter key.
+        GetDisplayText()  //type:string : This will call the display-text in the words.cs to show hidden text with underscore or show it.
+        IsCompletelyHidden() //type:bool : This will check to know when to quit the program.
+        
+
+    CLASS 2: Reference.cs // This class will keep / hold tracks of randomly selects scripture book, chapter and the verse information.
+                        //It should have the ability to get the display text of the reference, which is just a string combining the book, chapter, and verse (or verses). 
+                       //It is better to use a constructor for each data elements that this class stores,than having getters and setters.
+    Attributes:(member Variables)
+        _book : // type: string  
+        _chapter : // type: int  
+        _verse : // type: int
+        _endVerse : // type: int
+    Behaviors:(Methods)
+        GetDisplayText() //type:void
+        //possible getters and setters. will be replace with a constructor.
+
+
+    CLASS 3: Words.cs // This class will hold or keeps track of single words(in the scripture-book) and determine
+                      // whether it should be shown or hidden(with underscores).
+                      // The key behaviors for the Word class are to hide and show(display text of that Word) a word and to check if a word is hidden or not.
+    Attributes:(Variables)
+        _text : // type:string
+        _isHidden : // type: bool
+    Behaviors:(Methods)
+        Hide() : //type: void : This will hides with underscore
+        Show() : //type: void : This will show words
+        IsHidden() : //type: bool: 
+        GetDisplayText(): //type: string
