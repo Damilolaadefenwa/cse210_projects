@@ -7,7 +7,7 @@ class Program
         Console.WriteLine("Hello World! This is the ScriptureMemorizer Project.");
 
         Console.WriteLine("--------------------------------------------");
-
+        //FUNCTIONAL REQUIREMENT:
         // string _reference = "John 3:16-17";
         // string _text = "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.For God sent not his Son into the world to condemn the world; but that the world through him might be saved.";
 
@@ -15,6 +15,8 @@ class Program
 
 
         //EXCEEDING REQUIREMENT:
+        //Have your program work with a library of scriptures rather than a single one. 
+        //Choose scriptures at random to present to the user.
         List<Scripture> scriptures = new List<Scripture>
         {
             new Scripture("John 3:16-17", "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. For God sent not his Son into the world to condemn the world; but that the world through him might be saved."),

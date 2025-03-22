@@ -23,7 +23,7 @@ public class Scripture
     public void HideRandomWords()
     {
         Random random = new Random();
-        int wordsToHide = random.Next(1, _entries.Count / 3 + 1); //Hide 1 to 1/3 of the remaining words
+        int wordsToHide = random.Next(1, _entries.Count / 3 + 1); //Hide 1 to 1/2 of the remaining words
 
         for (int i = 0; i < wordsToHide; i++)
         {
