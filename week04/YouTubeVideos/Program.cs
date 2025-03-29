@@ -11,7 +11,7 @@ class Program
         //and for each one add a list of 3-4 comments (with the commenter's name and text). 
         //Put each of these videos in a list.
         
-        List<Video> videos = new List<Video>
+        List<Video> myVideos = new List<Video>
         {
             new Video("Hilarious Animals", "Evans Toyosi", 180, new List<Comment>{
                 new Comment("Ayo", "LOLzzzzzzzzz!"),
@@ -43,7 +43,7 @@ class Program
         //number of comments (from the method) and then list out all of the comments for that video. 
         //Repeat this display for each video in the list.
         
-        foreach (Video video in videos)
+        foreach (Video video in myVideos)
         {
             Console.WriteLine($"TITLE: {video._title}");   
             Console.WriteLine($"AUTHOR: {video._author}");   
