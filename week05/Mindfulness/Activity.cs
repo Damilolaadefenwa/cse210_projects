@@ -54,11 +54,12 @@ public class Activity
     // It takes an integer parameter seconds, which specifies the duration of the spinner.
     public void  ShowSpinner(int seconds)
     {
-        Console.WriteLine("Loading...");
+        Console.WriteLine("");
         for (int i = 0; i < seconds; i++)
         {
-            Console.Write(".");
+            Console.Write("\b/-/ \b"); // Show spinner character
             Thread.Sleep(1000); // Simulate loading time
+            // Console.Write("\b \b"); // Erase the last character
         }
         Console.WriteLine();
     }
@@ -72,6 +73,7 @@ public class Activity
         {
             Console.Write(i + " ");
             Thread.Sleep(1000); // Simulate countdown time
+           
         }
         Console.WriteLine();
     }
