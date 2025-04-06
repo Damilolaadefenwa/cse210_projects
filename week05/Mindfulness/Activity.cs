@@ -21,42 +21,6 @@ public class Activity
         _activityCounts = activityCounts ?? new Dictionary<string, int>();
     }
     
-    // Method to increment the activity count
-    public void IncrementActivityCount()
-    {
-        // _activityCounts[TryGetType().Name]++; 
-        string activityName = _name; // Use the activity's name as the key
-        if (_activityCounts.ContainsKey(activityName))
-        {
-            _activityCounts[activityName]++;
-        }
-        else
-        {
-            _activityCounts[activityName] = 1;
-        }
-        
-    }
-
-    // Static method to display the activity log
-    public  void DisplayActivityLog()
-    {
-        Console.WriteLine("---- Activity Log ----");
-
-
-        if (_activityCounts.Count == 0)
-        {
-            Console.WriteLine("No activities have been performed yet.");
-        }
-        else
-        {
-            foreach (var activity in _activityCounts)
-            {
-                Console.WriteLine($"{activity.Key}: {activity.Value} times");
-            }
-        }
-        Console.WriteLine("----------------------");
-    }
-
     // Create a getter for the name, description, and duration properties.
     public string GetName()
     {
@@ -118,6 +82,43 @@ public class Activity
         }
         Console.WriteLine();
     }
+
+    // Method to increment the activity count
+    public void IncrementActivityCount()
+    {
+        // _activityCounts[TryGetType().Name]++; 
+        string activityName = _name; // Use the activity's name as the key
+        if (_activityCounts.ContainsKey(activityName))
+        {
+            _activityCounts[activityName]++;
+        }
+        else
+        {
+            _activityCounts[activityName] = 1;
+        }
+        
+    }
+
+    // Static method to display the activity log
+    public  void DisplayActivityLog()
+    {
+        Console.WriteLine("---- Activity Log ----");
+
+
+        if (_activityCounts.Count == 0)
+        {
+            Console.WriteLine("No activities have been performed yet.");
+        }
+        else
+        {
+            foreach (var activity in _activityCounts)
+            {
+                Console.WriteLine($"{activity.Key}: {activity.Value} times");
+            }
+        }
+        Console.WriteLine("----------------------");
+    }
+
 
 
 }
