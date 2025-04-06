@@ -77,6 +77,7 @@ public class ReflectingActivity : Activity
         ShowCountdown(7); // Show countdown for 7 seconds
         
         DisplayEndMessage();
+        ShowSpinner(15); // Show spinner for 15 seconds
         Console.WriteLine("Thank you for participating.");
 
         // // Wait for user input before ending the activity

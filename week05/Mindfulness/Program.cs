@@ -9,6 +9,7 @@ class Program
 
         BreathingActivity breathing = new BreathingActivity(0);
         ReflectingActivity reflecting = new ReflectingActivity(new List<string>(), new List<string>());
+        ListingActivity listing = new ListingActivity(0, new List<string>()); 
 
         Console.WriteLine("Welcome to the Mindfulness Program!");
         while (true)
@@ -28,10 +29,9 @@ class Program
                 case "2":
                     reflecting.Run();
                     break;
-                // case "3":
-                //     ListingActivity listing = new ListingActivity("", "", 0);
-                //     listing.GetListFromUser();
-                //     break;
+                case "3":
+                    listing.Run();
+                    break;
                 case "4":
                     Console.WriteLine("Goodbye!");
                     return;
@@ -42,7 +42,6 @@ class Program
 
 
         }
-
 
 
     }
