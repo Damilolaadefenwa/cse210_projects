@@ -9,7 +9,7 @@ public class ReflectingActivity : Activity
 
     // Default constructor that initializes the activity with default prompts and questions.
     public ReflectingActivity(List<string> prompt, List<string> questions) 
-        : base("Reflecting","This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.", 0)
+        : base("Reflecting","This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.", 0, null)
     {
         // Default initialization of prompts and questions
         // set default values for the prompts and questions.
@@ -73,16 +73,13 @@ public class ReflectingActivity : Activity
         Console.WriteLine("> How did you feel when it was complete?.");
         ShowSpinner(15); // Show spinner for 7 seconds
         Console.WriteLine($"> {question}");
-        ShowSpinner(15); // Show spinner for 15 seconds
-        ShowCountdown(7); // Show countdown for 7 seconds
+        ShowSpinner(8); // Show spinner for 8 seconds
+        ShowCountdown(10); // Show countdown for 10 seconds
         
         DisplayEndMessage();
-        ShowSpinner(15); // Show spinner for 15 seconds
         Console.WriteLine("Thank you for participating.");
 
-        // // Wait for user input before ending the activity
-        // Console.WriteLine("Press any key to end the activity...");
-        // Console.ReadKey();
+        IncrementActivityCount(); // Increment the activity count for this activity
     }
 
     private static Random _random = new Random();

@@ -8,14 +8,55 @@ public class Activity
     private string _description;
     private int _duration;
 
+    // Exceeding requirement for this program. // Keeping a log of how many times activities were performed.
+    // Static dictionary to track activity counts
+    private Dictionary<string, int> _activityCounts;
+
     //A Constructor that takes no parameters and initializes the activity with default values. 
-    public Activity(string name, string description, int duration)
+    public Activity(string name, string description, int duration, Dictionary<string, int> activityCounts = null)
     {
         _name = name;
         _description = description;
         _duration = duration;
+        _activityCounts = activityCounts ?? new Dictionary<string, int>();
     }
     
+    // Method to increment the activity count
+    public void IncrementActivityCount()
+    {
+        // _activityCounts[TryGetType().Name]++; 
+        string activityName = _name; // Use the activity's name as the key
+        if (_activityCounts.ContainsKey(activityName))
+        {
+            _activityCounts[activityName]++;
+        }
+        else
+        {
+            _activityCounts[activityName] = 1;
+        }
+        
+    }
+
+    // Static method to display the activity log
+    public  void DisplayActivityLog()
+    {
+        Console.WriteLine("---- Activity Log ----");
+
+
+        if (_activityCounts.Count == 0)
+        {
+            Console.WriteLine("No activities have been performed yet.");
+        }
+        else
+        {
+            foreach (var activity in _activityCounts)
+            {
+                Console.WriteLine($"{activity.Key}: {activity.Value} times");
+            }
+        }
+        Console.WriteLine("----------------------");
+    }
+
     // Create a getter for the name, description, and duration properties.
     public string GetName()
     {
@@ -77,8 +118,6 @@ public class Activity
         }
         Console.WriteLine();
     }
-    
-
 
 
 }

@@ -8,7 +8,7 @@ public class ListingActivity : Activity
 
     // Constructor that initializes the activity with a name, description, and duration.
     public ListingActivity(int count, List<string> prompts) 
-        : base("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.", 0)
+        : base("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.", 0, null)
     {
         _count = count;
            
@@ -35,13 +35,13 @@ public class ListingActivity : Activity
         // and the user should be encouraged to think about it during that time.
         
         Console.WriteLine("Get ready.....");
-        ShowSpinner(7); // Show spinner for 7 seconds
+        ShowSpinner(10); // Show spinner for 10 seconds
         Console.WriteLine("List as many responses you can to the following prompt:");
         string prompt = GetRandomPrompt();
         Console.WriteLine($"---- {prompt} ----");
         // After displaying the prompt, the program should give them a countdown of several seconds to 
         // begin thinking about the prompt.
-        Console.WriteLine("You may begin in: "); ShowCountdown(7); // Show countdown for 7 seconds
+        Console.WriteLine("You may begin in: "); ShowCountdown(15); // Show countdown for 7 seconds
 
         // Then, it should prompt them to keep listing items.
         //The user lists as many items as they can until they they reach the duration specified by 
@@ -50,6 +50,8 @@ public class ListingActivity : Activity
 
         //The activity should conclude with the standard finishing message for all activities.
         DisplayEndMessage();
+
+        IncrementActivityCount(); // Increment the activity count for this activity
 
     }
     
