@@ -15,6 +15,7 @@ public class Circle : Shape
     public override double GetArea()
     {
         // return Math.PI * _radius * _radius; //The area of a circle is π * radius^2
+        // return _radius * _radius * Math.PI; // The instructor version.
         return Math.Round(Math.PI *_radius * _radius, 2); // The area of a circle is π * radius^2, rounded to 2 decimal places
     }
 
