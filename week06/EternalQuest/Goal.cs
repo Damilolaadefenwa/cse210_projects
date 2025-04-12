@@ -18,24 +18,35 @@ public abstract class  Goal
     }
 
     // Create setters and getters for the goal variable members
-    public string Getpoints()
+    public string GetNames()
     {
-        return _points;
+        return _shortName;
     }
-    public void Setpoints(string points)
+    public void SetNames(string shortName)
     {
-        _points = points;
+        _shortName = shortName;
     }
 
     // Create some methods to be overridden in the derived classes.
+
+    // 1.The RecordEvent method is called when a goal has been accomplished another time.   
     public abstract void RecordEvent();
+
+    // The IsComplete method checks if the goal is complete
+    // This method should return true if the goal is completed. 
+    // The way you determine if a goal is complete is different for each type of goal.
     public abstract bool IsComplete();
 
-    public string GetDetailsString()
+    // The GetDetailsString method returns a string representation of the goal details
+    // This method should return the details of a goal that could be shown in a list. 
+    // It should include the checkbox, the short name, and description
+    public virtual string GetDetailsString()
     {
-        return $"{_shortName} ({_description}) - Points: {_points}";
+        return $"{(IsComplete() ? "[X]" : "[]")} {_shortName}, ({_description}), -Point: {_points}";
     }
-
+    // The GetstringRepresentation method returns a string representation of the goal
+    // This method should provide all of the details of a goal in a way that is easy 
+    // to save to a file, and then load later.
     public abstract string GetstringRepresentation();
     
 }
