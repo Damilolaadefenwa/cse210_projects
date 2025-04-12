@@ -27,6 +27,12 @@ public class SimpleGoal : Goal
         return _isComplete;
     }
 
+    // Create a getter method for the _isComplete variable
+    public bool GetIsComplete()
+    {
+        return _isComplete;
+    }
+
     // Override the GetstringRepresentation method to return a string representation of the goal
     public override string GetstringRepresentation()
     {
