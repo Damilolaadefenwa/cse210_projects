@@ -62,11 +62,13 @@ public class GoalManager
     //     }
     // }
 
+    
     // DisplayPlayerInfo - This method displays the players current score.
     public void DisplayPlayerInfo()
     {
         Console.WriteLine($"Current Score is: {_score}");
     }
+    
     // ListGoalNames - This method Lists the names of each of the goals.
     public void ListGoalNames()
     {
@@ -82,6 +84,7 @@ public class GoalManager
         }
 
     }
+    
     // ListGoalDetails - This method Lists the details of each goal (including the checkbox of whether it is complete).
     public void ListGoalDetails()
     {
@@ -96,46 +99,79 @@ public class GoalManager
             Console.WriteLine($"{i + 1}. {_goals[i].GetDetailsString()}"); // Display or Print each goal's details
         }
     }
+    
     // CreateGoal - This method asks the user for the information about a new goal. Then, creates the goal and adds it to the list.
     public void CreateGoal()
     {
-        Console.WriteLine("Enter the type of goal (Simple, Checklist, Eternal): ");
-        string goalType = Console.ReadLine().ToLower(); // Read the goal type from user input
+        Console.WriteLine("The types of Goals are:");
+        Console.WriteLine("1. Simple Goal");
+        Console.WriteLine("2. Eternal Goal");
+        Console.WriteLine("3. Checklist Goal");
+        Console.Write("What type of goal would you like to create? ");
+        string choice = Console.ReadLine();
 
-        Console.WriteLine("Enter the short name of the goal: ");
-        string shortName = Console.ReadLine(); // Read the short name from user input
-
-        Console.WriteLine("Enter the description of the goal: ");
-        string description = Console.ReadLine(); // Read the description from user input
-
-        Console.WriteLine("Enter the points for the goal: ");
-        string points = Console.ReadLine(); // Read the points from user input
-
-        Goal newGoal = null; // Initialize a new goal variable
-
-        switch (goalType) // Determine which type of goal to create based on user input
+        Console.Write("What is the name of your goal? ");
+        string name = Console.ReadLine();
+        Console.Write("What is a short description of it? ");
+        string description = Console.ReadLine();
+        Console.Write("What is the amount of points associated with this goal? ");
+        if (!int.TryParse(Console.ReadLine(), out int points))
         {
-            case "simple":
-                newGoal = new SimpleGoal(shortName, description, points); // Create a SimpleGoal
-                break;
-            case "checklist":
-                Console.WriteLine("Enter the target number of completions: ");
-                int target = int.Parse(Console.ReadLine()); // Read target number from user input
-                Console.WriteLine("Enter the bonus points for completing the checklist: ");
-                int bonus = int.Parse(Console.ReadLine()); // Read bonus points from user input
-                newGoal = new ChecklistGoal(shortName, description, points, target, bonus); // Create a ChecklistGoal
-                break;
-            case "eternal":
-                newGoal = new EternalGoal(shortName, description, points); // Create an EternalGoal
-                break;
-            default:
-                Console.WriteLine("Invalid goal type. Please try again."); // Handle invalid input
-                return; // Exit the method if invalid type is entered
+            Console.WriteLine("Invalid points input.");
+            return;
         }
 
-        _goals.Add(newGoal); // Add the newly created goal to the list of goals
-        Console.WriteLine($"New {goalType} goal created successfully!"); // Confirmation message
+        switch (choice)
+        {
+            case "1":
+                _goals.Add(new SimpleGoal(name, description, points.ToString()));
+                break;
+            case "2":
+                _goals.Add(new EternalGoal(name, description, points.ToString()));
+                break;
+            case "3":
+                Console.Write("How many times does this goal need to be accomplished for a bonus? ");
+                if (!int.TryParse(Console.ReadLine(), out int targetCount))
+                {
+                    Console.WriteLine("Invalid target count input.");
+                    return;
+                }
+                Console.Write("What is the bonus points for accomplishing it that many times? ");
+                if (!int.TryParse(Console.ReadLine(), out int bonusPoints))
+                {
+                    Console.WriteLine("Invalid bonus points input.");
+                    return;
+                }
+                _goals.Add(new ChecklistGoal(name, "", points.ToString(),  targetCount, bonusPoints));
+                break;
+            default:
+                Console.WriteLine("Invalid choice.");
+                break;
+        }
+        Console.WriteLine("Goal created successfully.");
+
     }
+    
+    //RecordEvent - This method asks the user which goal they have done and then records the event by calling the RecordEvent method on that goal.
+    public void RecordEvent()
+    {
+        ListGoalNames(); // Display the list of goal names to the user
+        Console.Write("Which goal did you accomplish? (Enter the number): ");
+        if (!int.TryParse(Console.ReadLine(), out int goalIndex) || goalIndex < 1 || goalIndex > _goals.Count)
+        {
+            Console.WriteLine("Invalid goal selection.");
+            return;
+        }
+
+        Goal selectedGoal = _goals[goalIndex - 1]; // Get the selected goal from the list
+        selectedGoal.RecordEvent(); // Call the RecordEvent method on the selected goal
+        _score += int.Parse(selectedGoal.GetPoints()); // Add points to the score based on the goal's points
+        Console.WriteLine($"Event recorded for {selectedGoal.GetNames()}! Your score is now {_score}.");
+    }
+
+
+
+    
 
 
 

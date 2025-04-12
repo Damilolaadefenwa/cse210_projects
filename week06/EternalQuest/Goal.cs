@@ -26,6 +26,14 @@ public abstract class  Goal
     {
         _shortName = shortName;
     }
+    public string GetPoints()
+    {
+        return _points;
+    }
+    public void SetPoints(string points)
+    {
+        _points = points;
+    }
 
     // Create some methods to be overridden in the derived classes.
 
