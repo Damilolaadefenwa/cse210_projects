@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Xml.Serialization;
 
 public class GoalManager
 {
@@ -22,11 +19,13 @@ public class GoalManager
    // Start() method is the main entry point for the GoalManager class. It displays a menu and handles user input.
     public void Start()
     {   
+    
         DisplayPlayerInfo(); // Display the player's current score at the start
-        string choice; // Initialize choice variable to store user input
-        do
+
+        while (true)
         {
             Console.Clear();
+            DisplayPlayerInfo(); // Display the player's current score
             Console.WriteLine("Menu Options! What would you like to do?");
             Console.WriteLine("1. Create a new goal");
             Console.WriteLine("2. List Goals");
@@ -36,7 +35,7 @@ public class GoalManager
             Console.WriteLine("6. Quit");
 
             Console.Write("Select a Choice from the menu: ");
-            choice = Console.ReadLine();
+            string choice = Console.ReadLine();
 
             switch (choice)
             {
@@ -47,10 +46,14 @@ public class GoalManager
                     ListGoalsDetails();
                     break;
                 case "3":
-                    SaveGoalsToFile("");
+                    Console.Write("Enter the file path to save goals: ");
+                    string filePath = Console.ReadLine();
+                    SaveGoalsToFile(filePath);
                     break;
                 case "4":
-                    LoadGoalsFromFile("");
+                    Console.Write("Enter the file path to load goals: ");
+                    string savedfile = Console.ReadLine();
+                    LoadGoalsFromFile(savedfile);
                     break;
                 case "5":
                     RecordEvent();
@@ -62,7 +65,7 @@ public class GoalManager
                     Console.WriteLine("Invalid choice, please try again.");
                     break;
             }
-        } while (choice != "6");
+        }
     }
     
     // CreateGoal - This method asks the user for the information about a new goal. Then, creates the goal and adds it to the list.
@@ -121,6 +124,8 @@ public class GoalManager
     public void ListGoalsDetails()
     {
         Console.WriteLine("Your Goals:");
+        _goals.Add(new SimpleGoal("Test", "Test", 0)); // Add a test goal for demonstration purposes
+        // _goals.Add(CreateGoal()); // Add a new goal for demonstration purposes
         if (_goals.Count == 0) // Check if there are no goals
         {
             Console.WriteLine("No goals created yet.");
@@ -180,18 +185,17 @@ public class GoalManager
     //SaveGoals - Saves the list of goals to a file.
     public void SaveGoalsToFile(string filePath)
     {
-        using (StreamWriter mywriter = new StreamWriter(filePath))
+        using (StreamWriter outputFile = new StreamWriter(filePath))
         {
-            mywriter.WriteLine(_score.ToString()); // Save the current score to the file
+            outputFile.WriteLine(_score); // Save the current score to the file
 
             foreach (var goal in _goals)
             {
-                mywriter.WriteLine(goal.GetstringRepresentation()); // Save each goal's string representation to the file
+                outputFile.WriteLine(goal.GetstringRepresentation()); // Save each goal's string representation to the file
             }
         }
         try
         {
-            // File.WriteAllLines(filePath, mywriter, System.Text.Encoding.UTF8);
             Console.WriteLine("Goals and Score saved successfully.");   
         }
         catch (Exception ex)
@@ -202,15 +206,15 @@ public class GoalManager
     }
 
     // LoadGoals - Loads the list of goals from a file.
-    public void LoadGoalsFromFile(string filePath)
+    public void LoadGoalsFromFile(string savedfile)
     {
         
-        if (File.Exists(filePath))
+        if (File.Exists(savedfile))
         
         {
             try
             {
-                string[] lines = File.ReadAllLines(filePath); //
+                string[] lines = File.ReadAllLines(savedfile); //
                 if (lines.Length > 0 && int.TryParse(lines[0], out int savedScore))
                 {
                     _score = savedScore;
