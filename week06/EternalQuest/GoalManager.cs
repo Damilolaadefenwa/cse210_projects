@@ -19,19 +19,20 @@ public class GoalManager
     // This is the "main" function for this class. It is called by Program.cs, and then runs the menu loop.
    // Start() method is the main entry point for the GoalManager class. It displays a menu and handles user input.
     public void Start()
-    {
+    {   
+        DisplayPlayerInfo(); // Display the player's current score at the start
+
         bool running = true;
         while (running)
         {
             Console.Clear();
-            Console.WriteLine("Welcome to the Eternal Quest! What would you like to do?");
+            Console.WriteLine("Menu Options! What would you like to do?");
             Console.WriteLine("1. Create a new goal");
-            Console.WriteLine("2. List all goals");
-            Console.WriteLine("3. Record an event for a goal");
-            Console.WriteLine("4. Save goals to file");
-            Console.WriteLine("5. Load goals from file");
-            Console.WriteLine("6. Show score");
-            Console.WriteLine("7. Quit");
+            Console.WriteLine("2. List Goals");
+            Console.WriteLine("3. Save goals to file");
+            Console.WriteLine("4. Load goals from file");
+            Console.WriteLine("5. Record an event for a goal");
+            Console.WriteLine("6. Quit");
 
             string choice = Console.ReadLine();
 
@@ -40,24 +41,21 @@ public class GoalManager
                 case "1":
                     CreateGoal();
                     break;
-                // case "2":
-                //     ListGoals();
-                //     break;
-                case "3":
-                    RecordEvent();
+                case "2":
+                    ListGoalNames();
                     break;
-                case "4":
+                case "3":
                     SaveGoalsToFile("");
                     break;
-                case "5":
+                case "4":
                     LoadGoalsFromFile("");
                     break;
+                case "5":
+                    RecordEvent();
+                    break;
                 case "6":
-                    DisplayPlayerInfo();
-                    break;
-                case "7":
-                    running = false;
-                    break;
+                    Console.WriteLine("Goodbye!");
+                    return; // Exit the loop and end the program
                 default:
                     Console.WriteLine("Invalid choice, please try again.");
                     break;
@@ -69,7 +67,8 @@ public class GoalManager
     // DisplayPlayerInfo - This method displays the players current score.
     public void DisplayPlayerInfo()
     {
-        Console.WriteLine($"Current Score is: {_score}");
+        Console.WriteLine($"You have {_score} points.");
+        // Console.WriteLine($"Current Score is: {_score}");
     }
     
     // ListGoalNames - This method Lists the names of each of the goals.
