@@ -34,9 +34,11 @@ public class SimpleGoal : Goal
     }
 
     // override the GetDetailsString method which also serve as display method
-    public override void GetDetailsString()
+    public override string GetDetailsString()
     {
-        Console.WriteLine($"SimpleGoal: {GetNames()}, ({GetPoints()}), -Complete: {_isComplete}");
+        return $"SimpleGoal: {GetNames()}, {GetDescription()}, ({GetPoints()}), -Complete: {_isComplete}";
+        
+        //Console.WriteLine($"SimpleGoal: {GetNames()}, {GetDescription()}, ({GetPoints()}), -Complete: {_isComplete}");
     }
 
     // Override the GetstringRepresentation method to return a string representation a.k.a information of the goal

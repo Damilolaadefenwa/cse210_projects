@@ -60,12 +60,13 @@ public abstract class  Goal
     // This method should return the details of a goal that could be shown in a list. 
     // It should include the checkbox, the short name, and description
     
-    public abstract void GetDetailsString();
+    // public abstract void GetDetailsString();
 
-    // public virtual string GetDetailsString()
-    // {
-    //     return $"{(IsComplete() ? "[X]" : "[]")} {_shortName}, ({_description}), -Point: {_points}";
-    // }
+    public virtual string GetDetailsString()
+    {
+        return $"{_shortName} ({_description}) -Points {_points}";
+        // return $"{(IsComplete() ? "[X]" : "[]")} {_shortName}, ({_description}), -Point: {_points}";
+    }
     
     // The GetstringRepresentation method returns a string representation of the goal
     // This method should provide all of the details of a goal in a way that is easy 

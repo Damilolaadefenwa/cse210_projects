@@ -124,7 +124,7 @@ public class GoalManager
     public void ListGoalsDetails()
     {
         Console.WriteLine("Your Goals:");
-        _goals.Add(new SimpleGoal("Test", "Test", 0)); // Add a test goal for demonstration purposes
+        // _goals.Add(new SimpleGoal("Test", "Test", 0)); // Add a test goal for demonstration purposes
         // _goals.Add(CreateGoal()); // Add a new goal for demonstration purposes
         if (_goals.Count == 0) // Check if there are no goals
         {

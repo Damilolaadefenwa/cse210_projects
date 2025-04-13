@@ -23,9 +23,10 @@ public class EternalGoal : Goal
     }
 
     // override the GetDetailsString method which also serve as display method
-    public override void GetDetailsString()
+    public override string GetDetailsString()
     {
-        Console.WriteLine($"[ ] {GetNames()} - Points: {GetPoints()}");
+        return $"EternalGoal: {GetNames()}, ({GetDescription()}), -Point: {GetPoints()}"; // No completion status for eternal goals
+        // Console.WriteLine($"[ ] {GetNames()} - Points: {GetPoints()}");
     }
 
     // Override the GetstringRepresentation method to return a string representation a.k.a information of the goal

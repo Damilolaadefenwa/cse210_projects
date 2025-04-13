@@ -41,10 +41,16 @@ public class ChecklistGoal : Goal
     // Override the GetDetailsString method to shown the number of times the goal has been accomplished so far.
     // Then in the case of the ChecklistGoal class, it should be overridden to shown the number of times the 
     // goal has been accomplished so far.
-    public override void GetDetailsString()
+    public override string GetDetailsString()
     {
-        Console.WriteLine($"{(IsComplete() ? "[X]" : "[]")} {GetNames()}  -Completed: {_amountCompleted}/{_target} times");
+        return $"ChecklistGoal: {GetNames()}, ({GetDescription()}), -Point: {GetPoints()}, -Completed: {_amountCompleted}/{_target} - Bonus Points: {_bonus}";
+        // Console.WriteLine($"{(IsComplete() ? "[X]" : "[]")} {GetNames()}  -Completed: {_amountCompleted}/{_target} times");
     }
+    //public override void DisplayDetails()
+    // {
+    //     Console.WriteLine($"Checklist Goal: {Name} - Points: {Points} - Completed: {(IsComplete ? "Yes" : "No")} - Completed Count: {CompletedCount}/{TargetCount} - Bonus Points: {_bonus}");
+    // }
+
     
     // Override the GetstringRepresentation method to return a string representation of the checklist goal
     public override string GetstringRepresentation()
@@ -53,9 +59,5 @@ public class ChecklistGoal : Goal
         
     }
 
-    //public override void DisplayDetails()
-    // {
-    //     Console.WriteLine($"Checklist Goal: {Name} - Points: {Points} - Completed: {(IsComplete ? "Yes" : "No")} - Completed Count: {CompletedCount}/{TargetCount} - Bonus Points: {_bonus}");
-    // }
-
+    
 }
