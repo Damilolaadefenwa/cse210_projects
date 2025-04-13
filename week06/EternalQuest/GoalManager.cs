@@ -34,6 +34,7 @@ public class GoalManager
             Console.WriteLine("5. Record an event for a goal");
             Console.WriteLine("6. Quit");
 
+            Console.Write("Select a Choice from the menu: ");
             string choice = Console.ReadLine();
 
             switch (choice)
@@ -54,8 +55,9 @@ public class GoalManager
                     RecordEvent();
                     break;
                 case "6":
-                    Console.WriteLine("Goodbye!");
-                    return; // Exit the loop and end the program
+                    running = false; // Set running to false to exit the loop
+                    Console.WriteLine("Exiting the program..."); // Exit the loop and end the program
+                    break;
                 default:
                     Console.WriteLine("Invalid choice, please try again.");
                     break;
