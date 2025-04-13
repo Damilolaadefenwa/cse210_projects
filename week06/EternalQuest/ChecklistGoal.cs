@@ -9,7 +9,7 @@ public class ChecklistGoal : Goal
     private int _bonus;
 
     // Constructor to initialize the checklist goal variable members
-    public ChecklistGoal(string shortName, string description, string points, int target, int bonus) : base(shortName, description, points)
+    public ChecklistGoal(string shortName, string description, int points, int target, int bonus) : base(shortName, description, points)
     {
         _amountCompleted = 0;
         _target = target;
@@ -41,15 +41,21 @@ public class ChecklistGoal : Goal
     // Override the GetDetailsString method to shown the number of times the goal has been accomplished so far.
     // Then in the case of the ChecklistGoal class, it should be overridden to shown the number of times the 
     // goal has been accomplished so far.
-    public override string GetDetailsString()
+    public override void GetDetailsString()
     {
-        return $"ChecklistGoal: {base.GetDetailsString()}, -Completed: {_amountCompleted}/{_target}";
+        Console.WriteLine($"{(IsComplete() ? "[X]" : "[]")} {GetNames()}  -Completed: {_amountCompleted}/{_target} times");
     }
     
     // Override the GetstringRepresentation method to return a string representation of the checklist goal
     public override string GetstringRepresentation()
     {
-        return $"ChecklistGoal: {GetDetailsString()}, -Bonus: {_bonus}";
+        return $"ChecklistGoal:{(IsComplete() ? "[X]" : "[]")} {GetNames()}, ({GetDescription()}), -Point: {GetPoints()}, -Completed: {_amountCompleted}/{_target} - Bonus Points: {_bonus}";
+        
     }
+
+    //public override void DisplayDetails()
+    // {
+    //     Console.WriteLine($"Checklist Goal: {Name} - Points: {Points} - Completed: {(IsComplete ? "Yes" : "No")} - Completed Count: {CompletedCount}/{TargetCount} - Bonus Points: {_bonus}");
+    // }
 
 }

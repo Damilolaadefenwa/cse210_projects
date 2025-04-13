@@ -5,7 +5,7 @@ public class EternalGoal : Goal
 
     // Has no member variables
     // Constructor to initialize the eternal goal variable members from the base class
-    public EternalGoal(string shortName, string description, string points) : base(shortName, description, points)
+    public EternalGoal(string shortName, string description, int points) : base(shortName, description, points)
     {
         // Has nothing to initialize
     }
@@ -22,10 +22,16 @@ public class EternalGoal : Goal
         return false; // Eternal goals are never complete
     }
 
-    // Override the GetstringRepresentation method to return a string representation of the eternal goal
+    // override the GetDetailsString method which also serve as display method
+    public override void GetDetailsString()
+    {
+        Console.WriteLine($"[ ] {GetNames()} - Points: {GetPoints()}");
+    }
+
+    // Override the GetstringRepresentation method to return a string representation a.k.a information of the goal
     public override string GetstringRepresentation()
     {
-        return $"EternalGoal: {GetDetailsString()}"; // No completion status for eternal goals
+        return $"EternalGoal:{(IsComplete() ? "[X]" : "[]")} {GetNames()}, ({GetDescription()}), -Point: {GetPoints()} "; // No completion status for eternal goals
     }
     
 

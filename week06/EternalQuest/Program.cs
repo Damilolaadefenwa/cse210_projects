@@ -6,8 +6,8 @@ class Program
     {
         Console.WriteLine("Hello World! This is the EternalQuest Project.");
         Console.WriteLine("-----------------------------------------------");
-        GoalManager mygoals = new GoalManager();
-        mygoals.Start();
+        GoalManager mymanager = new GoalManager();
+        mymanager.Start();
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
         Console.WriteLine("Goodbye! Thank you for playing the EternalQuest Project.");

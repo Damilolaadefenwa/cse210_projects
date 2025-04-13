@@ -6,7 +6,7 @@ public class SimpleGoal : Goal
     private bool _isComplete;
 
     // Constructor to initialize the simple goal variable members
-    public SimpleGoal(string shortName, string description, string points) : base(shortName, description, points)
+    public SimpleGoal(string shortName, string description, int points) : base(shortName, description, points)
     {
         _isComplete = false;
     }
@@ -33,10 +33,16 @@ public class SimpleGoal : Goal
         return _isComplete;
     }
 
-    // Override the GetstringRepresentation method to return a string representation of the goal
+    // override the GetDetailsString method which also serve as display method
+    public override void GetDetailsString()
+    {
+        Console.WriteLine($"SimpleGoal: {GetNames()}, ({GetPoints()}), -Complete: {_isComplete}");
+    }
+
+    // Override the GetstringRepresentation method to return a string representation a.k.a information of the goal
     public override string GetstringRepresentation()
     {
-        return $"SimpleGoal: {GetDetailsString()}, -Complete: {_isComplete}";
+        return $"{(IsComplete() ? "[X]" : "[]")} {GetNames()}, ({GetDescription()}), -Point: {GetPoints()}";
     }
 
 }
