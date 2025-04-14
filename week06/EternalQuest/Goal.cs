@@ -8,7 +8,6 @@ public abstract class  Goal
     private string _shortName;
     private string _description;
     private int _points;
-    internal int points;
 
     // Constructor to initialize the goal variable members
     public Goal(string shortName, string description, int points)

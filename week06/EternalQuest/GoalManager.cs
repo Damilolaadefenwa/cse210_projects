@@ -4,7 +4,8 @@ using System.IO;
 
 public class GoalManager
 {
-    private List<Goal> _goals;
+    private List<Goal> _goals; // List to store the goals created by the user
+    // private List<Goal> _goals = new List<Goal>; // List to store the goals created by the user
     private int _score;
     
     // Constructor to initialize the goal manager with an empty list of goals and a score of 0 
@@ -19,10 +20,8 @@ public class GoalManager
    // Start() method is the main entry point for the GoalManager class. It displays a menu and handles user input.
     public void Start()
     {   
-    
-        DisplayPlayerInfo(); // Display the player's current score at the start
-
-        while (true)
+        bool isRunning = true; // Flag to control the 
+        while (isRunning)
         {
             Console.Clear();
             DisplayPlayerInfo(); // Display the player's current score
@@ -59,6 +58,7 @@ public class GoalManager
                     RecordEvent();
                     break;
                 case "6":
+                    isRunning = false; // Set the flag to false to exit the loop
                     Console.WriteLine("Thank you for playing Eternal Quest!"); // Exit the loop and end the program
                     break;
                 default:
@@ -124,18 +124,24 @@ public class GoalManager
     public void ListGoalsDetails()
     {
         Console.WriteLine("Your Goals:");
+        
+        // Console.WriteLine("Your Goals:");
         // _goals.Add(new SimpleGoal("Test", "Test", 0)); // Add a test goal for demonstration purposes
         // _goals.Add(CreateGoal()); // Add a new goal for demonstration purposes
-        if (_goals.Count == 0) // Check if there are no goals
-        {
-            Console.WriteLine("No goals created yet.");
-            return; // Exit the method if no goals exist
-        }
-        for (int i = 0; i < _goals.Count; i++) // Loop through the goals list
-        {
-            Console.Write($"{i + 1}. "); 
-            _goals[i].GetDetailsString(); // Call the GetDetailsString method to get the goal's details
-        }
+        // if (_goals.Count == 0) // Check if there are no goals
+        // {
+        //     Console.WriteLine("No goals created yet.");
+        //     return; // Exit the method if no goals exist
+        // }
+        // else
+        // {
+        //    for (int i = 0; i < _goals.Count; i++) // Loop through the goals list
+        //     {
+        //         Console.Write($"{i + 1}. "); 
+        //         _goals[i].GetDetailsString(); // Call the GetDetailsString method to get the goal's details
+        //     } 
+        // }
+        
     }
 
     // ListGoalNames - This method Lists the names of each of the goals.
