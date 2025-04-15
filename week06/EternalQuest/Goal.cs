@@ -43,6 +43,7 @@ public abstract class  Goal
         _description = description;
     }
     
+    
     // Create some methods to be overridden in the derived classes.
 
     // 1.The RecordEvent method is called when a goal has been accomplished another time.   

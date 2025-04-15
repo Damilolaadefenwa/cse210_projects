@@ -160,7 +160,7 @@ public  class GoalManager
     // ListGoalNames - This method Lists the names of each of the goals.
     public void ListGoalNames()
     {
-        Console.WriteLine("Debugging ListGoalNames():This function is working................................");
+        // Console.WriteLine("Debugging ListGoalNames():This function is working................................");
         
         Console.WriteLine("Goals Names:");
         if (_goals.Count == 0) // Check if there are no goals
@@ -192,10 +192,13 @@ public  class GoalManager
         if (int.TryParse(Console.ReadLine(), out int goalNumber) && goalNumber > 0 && goalNumber <= _goals.Count)
         {
             Goal goal = _goals[goalNumber - 1];
-            int previousScore = _score;
-            goal.RecordEvent();
-            _score += goal.GetPoints();
-            Console.WriteLine($"Congratulations! You earned {goal.GetPoints() - (previousScore == _score ? 0 : _goals[goalNumber - 1].GetPoints())} points for ' {goal.GetNames()}'. Your new score is {_score}.");
+            int pointsEarned = goal.GetPoints(); // Assume RecordEvent() returns the points earned for this event
+            _score += pointsEarned;    // Update the total score
+            Console.WriteLine($"Congratulations! You earned {pointsEarned} points for '{goal.GetNames()}'. Your new score is {_score}.");
+            // // int previousScore = _score;
+            // // goal.RecordEvent();
+            // _score += goal.GetPoints();
+            // Console.WriteLine($"Congratulations! You earned {goal.GetPoints() - (previousScore == _score ? 0 : _goals[goalNumber - 1].GetPoints())} points for ' {goal.GetNames()}'. Your new score is {_score}.");
         }
         else
         {
@@ -206,8 +209,7 @@ public  class GoalManager
     // DisplayPlayerInfo - This method displays the players current score.
     public void DisplayPlayerInfo()
     {
-        Console.WriteLine("Debbugging: DisplayPlayerInfo(). This function is working................................");
-
+        // Console.WriteLine("Debbugging: DisplayPlayerInfo(). This function is working................................");
 
         Console.WriteLine($"You have {_score} points.");   // Display the current score
         // Console.WriteLine($"Your current score is: {score}");
@@ -216,7 +218,7 @@ public  class GoalManager
     // SaveGoals - Saves the list of goals to a file.
     public void SaveGoalsToFile(string filePath)
     {
-        Console.WriteLine("Debugging: SaveGoalsToFile() This function is working................................");
+        // Console.WriteLine("Debugging: SaveGoalsToFile() This function is working................................");
         
         using (StreamWriter outputFile = new StreamWriter(filePath))
         {

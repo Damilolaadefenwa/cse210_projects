@@ -1,2 +1,2 @@
 0
-EternalGoal:[] Book of Mormon, (A study of the scripture), -Point: 10 
+ChecklistGoal:[] Buy Foodstuff, (stuffing the house with necessity), -Point: 50, -Completed: 0/2 - Bonus Points: 5

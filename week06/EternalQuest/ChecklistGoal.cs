@@ -32,6 +32,12 @@ public class ChecklistGoal : Goal
         
     }
 
+    // Create a getter method for the bonus variable
+    public int GetBonus()
+    {
+        return _bonus;
+    }
+    
     // Override the IsComplete method to check if the goal is complete
     public override bool IsComplete()
     {

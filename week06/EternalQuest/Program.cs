@@ -7,9 +7,9 @@ class Program
         Console.WriteLine("Hello World! This is the EternalQuest Project.");
         Console.WriteLine("-----------------------------------------------");
         GoalManager mymanager = new GoalManager();
-        // mymanager.Start();
+        mymanager.Start();
         
-        //TEST SOME FUNCTIONS
+        //TESTING SOME FUNCTIONS
         // test 1
         // mymanager.CreateGoal();
         // // test 2
