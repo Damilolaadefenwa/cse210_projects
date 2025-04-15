@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
+// I exceeded requirement by adding Visual Enhancements to the public void ListGoalsDetails() method.
+// in order to make a colour coded out put for the goals based on their completion status.
 public  class GoalManager
 {
     private List<Goal> _goals; // List to store the goals created by the user
@@ -141,19 +143,55 @@ public  class GoalManager
                 for (int i = 0; i < _goals.Count; i++) // Loop through the goals list
                 {
                     Console.Write($"{i + 1}. "); 
-                    // _goals[i].GetDetailsString(); // Call the GetDetailsString method to get the goal's details
+                    if (_goals[i].IsComplete()) // Check if the goal is complete
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green; // Green for completed goals
+                    }
+                    else if (_goals[i] is EternalGoal) // Check if the goal is an EternalGoal
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow; // Yellow for eternal goals
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue; // Default color for other goals
+                    }
+                    
                     Console.WriteLine(_goals[i].GetDetailsString()); // Display or Print each goal's details
-                
-                    //Call the GetDetailsString method to get the goal's details
-                    //Console.WriteLine($"{i + 1}. {_goals[i].GetDetailsString()}"); // Display or Print each goal's details
+                    
                 } 
                 Console.WriteLine("End of Goals List.");
+                Console.ResetColor(); // Reset the console color to default
             }
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error listing goals: {ex.Message}");
         }
+        
+
+        // try
+        // {
+        //     Console.WriteLine("List of Goals are:: ");
+        //     if (_goals.Count == 0) // Check if there are no goals
+        //     {
+        //         Console.WriteLine("No goals created yet.");
+        //         return; // Exit the method if no goals exist
+        //     }
+        //     else
+        //     {
+        //         for (int i = 0; i < _goals.Count; i++) // Loop through the goals list
+        //         {
+        //             Console.Write($"{i + 1}. "); 
+        //             // _goals[i].GetDetailsString(); // lines not working due to syntax error
+        //             Console.WriteLine(_goals[i].GetDetailsString()); // Display or Print each goal's details
+        //         } 
+        //         Console.WriteLine("End of Goals List.");
+        //     }
+        // }
+        // catch (Exception ex)
+        // {
+        //     Console.WriteLine($"Error listing goals: {ex.Message}");
+        // }
         
     }
 
@@ -273,7 +311,7 @@ public  class GoalManager
                     string description = parts[2];
                     if (!int.TryParse(parts[3], out int points))
                     {
-                        Console.WriteLine($"Skipping invalid points on line {i}: {lines[i]}");
+                        Console.WriteLine($"line: {i}: {lines[i]}");
                         continue; // Skip this line if points are invalid
                     }
                    
@@ -288,13 +326,13 @@ public  class GoalManager
                     case "ChecklistGoal":
                         if (parts.Length < 5 || !int.TryParse(parts[4], out int target) || !int.TryParse(parts[5], out int bonus))
                         {
-                            Console.WriteLine($"Skipping invalid ChecklistGoal on line {i}: {lines[i]}");
+                            Console.WriteLine($"line: {i}: {lines[i]}");
                             continue; // Skip this line if target or bonus is invalid
                         }
                         _goals.Add(new ChecklistGoal(name, description, points, target, bonus));
                         break;
                     default:
-                        Console.WriteLine($"Skipping unknown goal type on line {i}: {lines[i]}");
+                        Console.WriteLine($"unknown-goal line: {i}: {lines[i]}");
                         break;
                     }
                    

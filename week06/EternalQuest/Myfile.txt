@@ -1,2 +1,4 @@
-0
-ChecklistGoal:[] Buy Foodstuff, (stuffing the house with necessity), -Point: 50, -Completed: 0/2 - Bonus Points: 5
+350
+[] Personal Hygiene, (How to look clean), -Point: 100
+EternalGoal:[] Spiritual Activities, (Performing any of covenant tasks), -Point: 50 
+ChecklistGoal:[] Shopping, (For building Raw  material), -Point: 100, -Completed: 0/3 - Bonus Points: 10

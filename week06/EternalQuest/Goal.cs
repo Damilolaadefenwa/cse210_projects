@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
+// I exceeded requirement by adding Visual Enhancements to the public void ListGoalsDetails() method in the Goal manager.
+// in order to make a colour coded out put for the goals based on their completion status.
 public abstract class  Goal
 {
     private string _shortName;
