@@ -1,2 +1,2 @@
 0
-[] Bible Study, (Reading the book of mormon everyday), -Point: 100
+EternalGoal:[] Book of Mormon, (A study of the scripture), -Point: 10 

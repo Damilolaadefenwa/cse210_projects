@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-public class GoalManager
+public  class GoalManager
 {
     private List<Goal> _goals; // List to store the goals created by the user
     // private List<Goal> _goals = new List<Goal>; // List to store the goals created by the user
@@ -23,7 +23,7 @@ public class GoalManager
         bool isRunning = true; // Flag to control the 
         while (isRunning)
         {
-            Console.Clear();
+            // Console.Clear();
             DisplayPlayerInfo(); // Display the player's current score
             Console.WriteLine("Menu Options! What would you like to do?");
             Console.WriteLine("1. Create a new goal");
@@ -123,30 +123,45 @@ public class GoalManager
     // ListGoalDetails - This method Lists the details of each goal (including the checkbox of whether it is complete).
     public void ListGoalsDetails()
     {
-        Console.WriteLine("Your Goals:");
+       
+        // Console.WriteLine("Debugging the ListGoalsDetails():This function is working................................");
+        // Console.WriteLine("List of Goals are: ");
+        // Console.WriteLine($"Debug: _goals count = {_goals.Count}");
         
-        // Console.WriteLine("Your Goals:");
-        // _goals.Add(new SimpleGoal("Test", "Test", 0)); // Add a test goal for demonstration purposes
-        // _goals.Add(CreateGoal()); // Add a new goal for demonstration purposes
-        // if (_goals.Count == 0) // Check if there are no goals
-        // {
-        //     Console.WriteLine("No goals created yet.");
-        //     return; // Exit the method if no goals exist
-        // }
-        // else
-        // {
-        //    for (int i = 0; i < _goals.Count; i++) // Loop through the goals list
-        //     {
-        //         Console.Write($"{i + 1}. "); 
-        //         _goals[i].GetDetailsString(); // Call the GetDetailsString method to get the goal's details
-        //     } 
-        // }
+        try
+        {
+            Console.WriteLine("List of Goals are:: ");
+            if (_goals.Count == 0) // Check if there are no goals
+            {
+                Console.WriteLine("No goals created yet.");
+                return; // Exit the method if no goals exist
+            }
+            else
+            {
+                for (int i = 0; i < _goals.Count; i++) // Loop through the goals list
+                {
+                    Console.Write($"{i + 1}. "); 
+                    // _goals[i].GetDetailsString(); // Call the GetDetailsString method to get the goal's details
+                    Console.WriteLine(_goals[i].GetDetailsString()); // Display or Print each goal's details
+                
+                    //Call the GetDetailsString method to get the goal's details
+                    //Console.WriteLine($"{i + 1}. {_goals[i].GetDetailsString()}"); // Display or Print each goal's details
+                } 
+                Console.WriteLine("End of Goals List.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error listing goals: {ex.Message}");
+        }
         
     }
 
     // ListGoalNames - This method Lists the names of each of the goals.
     public void ListGoalNames()
     {
+        Console.WriteLine("Debugging ListGoalNames():This function is working................................");
+        
         Console.WriteLine("Goals Names:");
         if (_goals.Count == 0) // Check if there are no goals
         {
@@ -163,7 +178,14 @@ public class GoalManager
     //RecordEvent - This method asks the user which goal they have done and then records the event by calling the RecordEvent method on that goal.
     public void RecordEvent()
     {
+
+        // Console.WriteLine("Debugging RecordEvent():This function is working................................");
+        // // Console.WriteLine("Record an Event for a Goal:");
+        // Console.WriteLine("---------------------------------");
+
+        Console.WriteLine("The goals are as follow:");
         ListGoalNames(); // Display the list of goal names / details to the user
+
         if (_goals.Count == 0) return;
 
         Console.Write("Which goal did you accomplish? (Enter the number): ");
@@ -184,13 +206,18 @@ public class GoalManager
     // DisplayPlayerInfo - This method displays the players current score.
     public void DisplayPlayerInfo()
     {
-        Console.WriteLine($"You have {_score} points.");
+        Console.WriteLine("Debbugging: DisplayPlayerInfo(). This function is working................................");
+
+
+        Console.WriteLine($"You have {_score} points.");   // Display the current score
         // Console.WriteLine($"Your current score is: {score}");
     }
 
-    //SaveGoals - Saves the list of goals to a file.
+    // SaveGoals - Saves the list of goals to a file.
     public void SaveGoalsToFile(string filePath)
     {
+        Console.WriteLine("Debugging: SaveGoalsToFile() This function is working................................");
+        
         using (StreamWriter outputFile = new StreamWriter(filePath))
         {
             outputFile.WriteLine(_score); // Save the current score to the file
@@ -214,7 +241,8 @@ public class GoalManager
     // LoadGoals - Loads the list of goals from a file.
     public void LoadGoalsFromFile(string savedfile)
     {
-        
+        // Console.WriteLine("Debugging LoadGoalsFromFil().This function is working................................");
+
         if (File.Exists(savedfile))
         
         {
@@ -225,30 +253,49 @@ public class GoalManager
                 {
                     _score = savedScore;
                 }
+                
+                // _goals.Clear(); // Clear existing goals before loading new ones
                 for (int i = 1; i < lines.Length; i++)
                 {
-                    string[] parts = lines[i].Split(':');
+                    string[] parts = lines[i].Split(',');
+                   
+                    // Validate the line format
+                    if (parts.Length < 4) // Ensure there are enough parts
+                    {
+                        Console.WriteLine($"Skipping invalid line {i}: {lines[i]}");
+                        continue; // Skip this line and move to the next
+                    }
+                
                     string goalType = parts[0];
                     string name = parts[1];
                     string description = parts[2];
-                    int points = int.Parse(parts[3]);
-
-                    switch (goalType)
+                    if (!int.TryParse(parts[3], out int points))
                     {
-                        case "SimpleGoal":
-                            bool isComplete = int.Parse(parts[3]) == 1;
-                            _goals.Add(new SimpleGoal(name, description, points));
-                            break;
-                        case "EternalGoal":
-                            _goals.Add(new EternalGoal(name, description, points));
-                            break;
-                        case "ChecklistGoal":
-                            int target = int.Parse(parts[4]);
-                            int amountcompleted = int.Parse(parts[5]);
-                            int bonus = int.Parse(parts[6]);
-                            _goals.Add(new ChecklistGoal(name, description, points, target, bonus));
-                            break;
+                        Console.WriteLine($"Skipping invalid points on line {i}: {lines[i]}");
+                        continue; // Skip this line if points are invalid
                     }
+                   
+                    switch (goalType)
+                {
+                    case "SimpleGoal":
+                        _goals.Add(new SimpleGoal(name, description, points));
+                        break;
+                    case "EternalGoal":
+                        _goals.Add(new EternalGoal(name, description, points));
+                        break;
+                    case "ChecklistGoal":
+                        if (parts.Length < 5 || !int.TryParse(parts[4], out int target) || !int.TryParse(parts[5], out int bonus))
+                        {
+                            Console.WriteLine($"Skipping invalid ChecklistGoal on line {i}: {lines[i]}");
+                            continue; // Skip this line if target or bonus is invalid
+                        }
+                        _goals.Add(new ChecklistGoal(name, description, points, target, bonus));
+                        break;
+                    default:
+                        Console.WriteLine($"Skipping unknown goal type on line {i}: {lines[i]}");
+                        break;
+                    }
+                   
                 }
                 Console.WriteLine("Goals and score loaded successfully.");
             }
