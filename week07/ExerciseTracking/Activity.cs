@@ -6,16 +6,26 @@ using System.Globalization;
 public abstract class Activity
 {
     // Encapsulation: Private fields with public properties for controlled access
-    public DateTime Date { get; private set; }
-    public int DurationMinutes { get; private set; }
+    private DateTime _date;
+    private int _durationMinutes;
 
     // Constructor to initialize common properties
     protected Activity(DateTime date, int durationMinutes)
     {
-        Date = date;
-        DurationMinutes = durationMinutes;
+        _date = date;
+        _durationMinutes = durationMinutes;
     }
 
+    // Create some getter and setter methods for the private fields
+    public int GetdurationMinutes()
+    {
+        return _durationMinutes;
+    }
+    public DateTime GetDate()
+    {
+        return _date;
+    }
+    
     // Abstract methods to be implemented by derived classes
     public abstract double GetDistance();
     public abstract double GetSpeed();

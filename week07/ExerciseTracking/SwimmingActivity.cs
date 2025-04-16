@@ -6,7 +6,7 @@ using System.Globalization;
 public class Swimming : Activity
 {
     // Encapsulation: Private field for laps with public property for access
-    public int Laps { get; private set; }
+    private int _laps;
     private const double MetersPerLap = 50; // Assume a standard 50-meter pool
 
     // Constructor to initialize Swimming-specific properties
@@ -17,21 +17,21 @@ public class Swimming : Activity
         {
             throw new ArgumentException("Laps must be greater than zero.");
         }
-        Laps = laps;
+        _laps = laps;
     }
 
     // Implementation of abstract methods for Swimming
     public override double GetDistance()
     {
         // Calculate distance in meters
-        return Laps * MetersPerLap;
+        return _laps * MetersPerLap;
     }
 
     public override double GetSpeed()
     {
         // Calculate speed in meters per minute
         double distanceMeters = GetDistance();
-        return distanceMeters / DurationMinutes;
+        return distanceMeters / GetdurationMinutes(); // Speed in meters per minute
     }
 
     public override double GetPace()
@@ -44,8 +44,8 @@ public class Swimming : Activity
     public override string GetSummary()
     {
         // Format the date
-        string formattedDate = Date.ToString("dd MMM yyyy", CultureInfo.InvariantCulture);
+        string formattedDate = GetDate().ToString("dd MMM yyyy", CultureInfo.InvariantCulture);
         // Return the summary string
-        return $"{formattedDate} Swimming ({DurationMinutes} min) - Distance {GetDistance():F1} meters, Speed {GetSpeed():F1} m/min, Pace: {GetPace():F1} min per 100m";
+        return $"{formattedDate} Swimming ({GetdurationMinutes()} min) - Distance {GetDistance():F1} meters, Speed {GetSpeed():F1} m/min, Pace: {GetPace():F1} min per 100m";
     }
 }
