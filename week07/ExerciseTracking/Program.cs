@@ -16,9 +16,9 @@ class Program
         try
         {
             // Create activity objects with sample data
-            Activity running = new Running(DateTime.ParseExact("01/01/2024", "dd/MM/yyyy", CultureInfo.InvariantCulture), 30, 3.0);
-            Activity bicycle = new StationaryBicycle(DateTime.ParseExact("02/01/2024", "dd/MM/yyyy", CultureInfo.InvariantCulture), 45, 20.0);
-            Activity swimming = new Swimming(DateTime.ParseExact("03/01/2024", "dd/MM/yyyy", CultureInfo.InvariantCulture), 60, 30);
+            Activity running = new Running(DateTime.ParseExact("16/04/2025", "dd/MM/yyyy", CultureInfo.InvariantCulture), 30, 3.0);
+            Activity bicycle = new StationaryBicycle(DateTime.ParseExact("16/04/2025", "dd/MM/yyyy", CultureInfo.InvariantCulture), 45, 20.0);
+            Activity swimming = new Swimming(DateTime.ParseExact("16/04/2025", "dd/MM/yyyy", CultureInfo.InvariantCulture), 60, 30);
 
             // Add activities to the tracker
             Console.WriteLine("Adding the activities to the tracker...");
