@@ -6,10 +6,10 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.WriteLine("------------------------------------------------------");
         Console.WriteLine("Hello World! This is the ExerciseTracking Project.");
         // Create an instance of ActivityTracker
         Console.WriteLine("------------------------------------------------------");
-        
         // Create an instance of the ActivityTracker
         ActivityTracker mytracker = new ActivityTracker();
 
@@ -21,11 +21,13 @@ class Program
             Activity swimming = new Swimming(DateTime.ParseExact("03/01/2024", "dd/MM/yyyy", CultureInfo.InvariantCulture), 60, 30);
 
             // Add activities to the tracker
+            Console.WriteLine("Adding the activities to the tracker...");
             mytracker.AddActivity(running);
             mytracker.AddActivity(bicycle);
             mytracker.AddActivity(swimming);
 
             // Display all activities
+            Console.WriteLine();
             mytracker.DisplayActivities();
         }
         catch (ArgumentException ex)
