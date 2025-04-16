@@ -1,4 +1,4 @@
-350
-[] Personal Hygiene, (How to look clean), -Point: 100
-EternalGoal:[] Spiritual Activities, (Performing any of covenant tasks), -Point: 50 
-ChecklistGoal:[] Shopping, (For building Raw  material), -Point: 100, -Completed: 0/3 - Bonus Points: 10
+205
+[] Spiritual Talks, (It's biblical motivation ), -Point: 5
+EternalGoal:[] Scripture study, (Learning about the book of Mormon), -Point: 100 
+ChecklistGoal:[] Grocery Shopping, (Stuffing my basic needs), -Point: 100, -Completed: 0/3 - Bonus Points: 10
