@@ -13,6 +13,13 @@ class Program
         string last  = Console.ReadLine();
 
         Console.WriteLine($"Your name is {first}, {first} {last}.");
+
+        /// Testing some C# code snippets
+        /// This is a test for the C# code snippets.
+        /// The code snippets are designed to test the C# language features and syntax.
+
+        Console.WriteLine("Hello World! This is the Testingc#Coding Project.");
+        Console.WriteLine("------------------------------------------------------");   
        
     
     }
